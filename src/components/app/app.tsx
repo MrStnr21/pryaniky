@@ -12,7 +12,7 @@ const App: FC = () => {
   return (
     <div className={styleApp.app}>
       <Routes>
-        <Route path={routesUrl.homePage} element={<LoginPage />} />
+        <Route path={routesUrl.loginPage} element={<LoginPage />} />
         <Route path={routesUrl.mainPage} element={<MainPage />} />
       </Routes>
     </div>

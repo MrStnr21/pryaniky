@@ -1,4 +1,4 @@
 import { LoginPage } from "./login-page/login";
-import { MainPage } from "./dashboard/dashboard";
+import { MainPage } from "./table-page/table";
 
 export { LoginPage, MainPage };

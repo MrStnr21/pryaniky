@@ -1,0 +1,39 @@
+.section {
+  margin: 60px auto;
+  padding: 20px 40px;
+  width: 90%;
+  height: 500px;
+  box-shadow: 1px 1px 15px rgb(195, 195, 195);
+  border-radius: 10px;
+}
+
+.controlContainer {
+  margin: 0 auto;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.docControl {
+  margin: 0;
+  padding-left: 10px;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.docContainer {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgb(195, 195, 195);
+  border-bottom: 1px solid rgb(195, 195, 195);
+}
+
+.docTitle {
+  margin: 0;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 16px;
+  font-weight: normal;
+}
