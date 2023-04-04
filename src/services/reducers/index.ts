@@ -1,5 +1,11 @@
 import { combineReducers } from "redux";
 
-const rootReducer = combineReducers({});
+import { authorizationReducer } from "./authorization";
+import { getDocReducer } from "./data-doc";
+
+const rootReducer = combineReducers({
+  auth: authorizationReducer,
+  getDoc: getDocReducer,
+});
 
 export { rootReducer };

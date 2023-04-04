@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import { FC } from "react";
 
 import styleTable from "./table.module.css";
@@ -14,17 +12,37 @@ import {
   TableHead,
   TableRow,
   Button,
+  TableBody,
 } from "@mui/material";
+import { useNavigate } from "react-router";
+import { routesUrl } from "../utils/routesData";
+import { useAppDispatch, useAppSelector } from "../../services/hooks/hooks";
+import { logoutAction } from "../../services/actions/authorization";
+import { getDataDocAction } from "../../services/actions/data-doc";
+import { TableElement } from "../table-element/table-element";
 
 const Table: FC = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+  const { document } = useAppSelector((store) => store.getDoc);
+
+  const handleGetDataDoc = () => {
+    dispatch(getDataDocAction());
+  };
+
+  const handleLogout = () => {
+    dispatch(logoutAction());
+    navigate(routesUrl.login);
+  };
+
   return (
     <section className={styleTable.section}>
       <div className={styleTable.controlContainer}>
-        <Button variant="outlined">
+        <Button variant="outlined" onClick={handleGetDataDoc}>
           <PostAddIcon />
           <h2 className={styleTable.docControl}>Добавить новый документ</h2>
         </Button>
-        <Button variant="outlined" color="error">
+        <Button variant="outlined" color="error" onClick={handleLogout}>
           <LogoutIcon />
           <h2 className={styleTable.docControl}>Выйти из аккаунта</h2>
         </Button>
@@ -57,6 +75,7 @@ const Table: FC = () => {
               <TableCell align="left">Удалить</TableCell>
             </TableRow>
           </TableHead>
+          <TableBody></TableBody>
         </TableTemplate>
       </TableContainer>
     </section>
