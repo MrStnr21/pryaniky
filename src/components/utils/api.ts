@@ -4,6 +4,8 @@ import {
   IResponse,
   ILoginResponse,
   IGetDocResponse,
+  IAddDocResponse,
+  TDoc,
 } from "../../services/types/data";
 
 type TOptions = {
@@ -49,4 +51,16 @@ function getDataDocApi() {
   });
 }
 
-export { loginApi, getDataDocApi };
+//запрос на добавление нового документа
+function addNewDocApi(docInfo: TDoc) {
+  return request<IAddDocResponse>(`${BASE_URL}/userdocs/create`, {
+    method: "POST",
+    headers: {
+      "x-auth": localStorage.getItem("x-auth")!,
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify(docInfo),
+  });
+}
+
+export { loginApi, getDataDocApi, addNewDocApi };

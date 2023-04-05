@@ -1,33 +1,38 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, FormEvent } from "react";
+import { NavigateFunction, useNavigate } from "react-router";
 
 import stylesLogin from "./login.module.css";
 
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import Box from "@mui/material/Box";
+import {
+  Avatar,
+  Button,
+  CssBaseline,
+  TextField,
+  Box,
+  Container,
+  createTheme,
+  ThemeProvider,
+} from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Container from "@mui/material/Container";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+import { routesUrl } from "../../utils/routesData";
+import { authSel } from "../../utils/selectorData";
 
 import { useAppSelector, useAppDispatch } from "../../../services/hooks/hooks";
-import { FormEvent } from "react";
-import { loginAction } from "../../../services/actions/authorization";
 import { useForm, initialFormState } from "../../../services/hooks/useForm";
+
+import { loginAction } from "../../../services/actions/authorization";
+
 import { TFormStateType } from "../../../services/types/data";
-import { useNavigate } from "react-router";
-import { routesUrl } from "../../utils/routesData";
 
 const theme = createTheme();
 
 const Login: FC = () => {
-  const navigate = useNavigate();
+  const navigate: NavigateFunction = useNavigate();
   const dispatch = useAppDispatch();
+
   const { values, handleChange } = useForm<TFormStateType>(initialFormState);
-  const { loginRequest, loginError, loginSuccess } = useAppSelector(
-    (store) => store.auth
-  );
+  const { loginRequest, loginError, loginSuccess } = useAppSelector(authSel);
 
   const handleSubmitLogin = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();

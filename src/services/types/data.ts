@@ -11,15 +11,15 @@ export type TUser = {
 
 //типизация документа
 export type TDoc = {
-  readonly companySigDate: string;
-  readonly companySignatureName: string;
-  readonly documentName: string;
-  readonly documentStatus: string;
-  readonly documentType: string;
-  readonly employeeNumber: string;
-  readonly employeeSigDate: string;
-  readonly employeeSignatureName: string;
-  readonly id?: string;
+  companySigDate: string;
+  companySignatureName: string;
+  documentName: string;
+  documentStatus: string;
+  documentType: string;
+  employeeNumber: string;
+  employeeSigDate: string;
+  employeeSignatureName: string;
+  id?: string;
 };
 
 //типизация запросов api
@@ -47,6 +47,10 @@ export interface IGetDocResponse {
   data: TDoc[];
   error_code: number;
   error_message: string;
+}
+
+export interface IAddDocResponse extends IGetDocResponse {
+  document: TDoc;
 }
 
 //типизация хука useForm

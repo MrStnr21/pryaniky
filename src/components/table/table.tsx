@@ -1,4 +1,5 @@
 import { FC, useEffect } from "react";
+import { useNavigate } from "react-router";
 
 import styleTable from "./table.module.css";
 
@@ -11,25 +12,30 @@ import {
   Button,
   TableBody,
 } from "@mui/material";
-import { useNavigate } from "react-router";
+
 import { routesUrl } from "../utils/routesData";
+import { tableHeading } from "../utils/data";
+import { addDocumentSel, documentsSel } from "../utils/selectorData";
+
 import { useAppDispatch, useAppSelector } from "../../services/hooks/hooks";
+
 import { logoutAction } from "../../services/actions/authorization";
 import { getDataDocAction } from "../../services/actions/data-doc";
-import { TableElement } from "../table-element/table-element";
+
 import { TDoc } from "../../services/types/data";
-import { tableHeading } from "../utils/data";
-import { documentsSel } from "../utils/selectorData";
+
+import { TableElement } from "../table-element/table-element";
 import { BasicModal } from "../modal/modal";
 
 const Table: FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { documents } = useAppSelector(documentsSel);
+  const { addDocSuccess } = useAppSelector(addDocumentSel);
 
   useEffect(() => {
     dispatch(getDataDocAction());
-  }, [dispatch]);
+  }, [dispatch, addDocSuccess]);
 
   const handleLogout = () => {
     dispatch(logoutAction());

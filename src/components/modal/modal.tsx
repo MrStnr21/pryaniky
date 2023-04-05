@@ -6,6 +6,7 @@ import { Box, Button, Modal } from "@mui/material";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 
 import { DocumentForm } from "../document-form/document-form";
+
 import { tableHeading } from "../utils/data";
 
 const style = {
@@ -40,7 +41,7 @@ const BasicModal: FC<TModal> = ({ heading }) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <DocumentForm document={tableHeading} />
+          <DocumentForm documentInfo={tableHeading} onClose={handleClose} />
         </Box>
       </Modal>
     </div>

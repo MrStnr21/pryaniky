@@ -68,4 +68,4 @@ function authorizationReducer(
   }
 }
 
-export {  authorizationReducer };
+export { authorizationReducer };
