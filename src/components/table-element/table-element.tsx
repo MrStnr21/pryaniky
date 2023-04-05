@@ -13,20 +13,19 @@ const TableElement: FC<TDocument> = ({ document }) => {
   return (
     <>
       <TableRow>
-        <TableCell align="right">{document.documentName}</TableCell>
-        <TableCell align="right">{document.documentType}</TableCell>
-        <TableCell align="right">{document.companySigDate}</TableCell>
-        <TableCell align="right">{document.employeeNumber}</TableCell>
-        <TableCell align="right">{document.employeeSignatureName}</TableCell>
-        <TableCell align="right">{document.employeeSigDate}</TableCell>
-        <TableCell align="right">{document.companySignatureName}</TableCell>
-        <TableCell align="right">{document.companySigDate}</TableCell>
-        <TableCell align="right">
+        <TableCell align="left">{document.documentName}</TableCell>
+        <TableCell align="left">{document.documentType}</TableCell>
+        <TableCell align="left">{document.employeeNumber}</TableCell>
+        <TableCell align="left">{document.employeeSignatureName}</TableCell>
+        <TableCell align="left">{document.employeeSigDate}</TableCell>
+        <TableCell align="left">{document.companySignatureName}</TableCell>
+        <TableCell align="left">{document.companySigDate}</TableCell>
+        <TableCell align="left">
           <IconButton type="button" aria-label="edit">
             <EditIcon />
           </IconButton>
         </TableCell>
-        <TableCell align="right">
+        <TableCell align="left">
           <IconButton type="button" aria-label="edit">
             <DeleteIcon />
           </IconButton>

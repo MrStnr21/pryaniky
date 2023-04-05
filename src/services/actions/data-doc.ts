@@ -32,14 +32,26 @@ const getDataDocAction: any = () => {
       type: GET_DOC_REQUEST,
     });
 
-    getDataDocApi().then((res) => {
-      console.log(res);
-      dispatch({
-        type: GET_DOC_SUCCESS,
-        payload: res.data,
-      });
-    });
+    getDataDocApi()
+      .then((res) => {
+        if (!res.error_code) {
+          console.log(res.data);
+          dispatch({
+            type: GET_DOC_SUCCESS,
+            payload: res.data,
+          });
+        } else {
+          console.log(res.error_code);
+          dispatch({
+            type: GET_DOC_ERROR,
+          });
+        }
+      })
+      .catch((err: { message: string }) =>
+        dispatch({
+          type: GET_DOC_ERROR,
+        })
+      );
   };
 };
-
 export { GET_DOC_REQUEST, GET_DOC_SUCCESS, GET_DOC_ERROR, getDataDocAction };

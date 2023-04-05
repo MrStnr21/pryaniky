@@ -8,15 +8,15 @@ import { TDoc } from "../types/data";
 import { TGetDocActions } from "../actions/data-doc";
 
 export type TDocState = {
-  document: TDoc | null;
-  documentRequest: boolean;
-  hasError: boolean;
+  documents: Array<TDoc>;
+  documentsRequest: Boolean;
+  documentsError: Boolean;
 };
 
 const docInitialState: TDocState = {
-  document: null,
-  documentRequest: false,
-  hasError: false,
+  documents: [],
+  documentsRequest: false,
+  documentsError: false,
 };
 
 function getDocReducer(state = docInitialState, action: TGetDocActions) {
@@ -25,23 +25,23 @@ function getDocReducer(state = docInitialState, action: TGetDocActions) {
     case GET_DOC_REQUEST: {
       return {
         ...state,
-        documentRequest: true,
-        hasError: false,
+        documentsRequest: true,
+        documentsError: false,
       };
     }
     case GET_DOC_SUCCESS: {
       return {
         ...state,
-        document: action.payload, // тут проблема
-        documentRequest: false,
-        hasError: false,
+        documents: action.payload,
+        documentsRequest: false,
+        documentsError: false,
       };
     }
     case GET_DOC_ERROR: {
       return {
         ...state,
-        documentRequest: false,
-        hasError: true,
+        documentsRequest: false,
+        documentsError: true,
       };
     }
     default:

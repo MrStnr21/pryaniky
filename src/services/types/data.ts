@@ -11,15 +11,15 @@ export type TUser = {
 
 //типизация документа
 export type TDoc = {
-  companySigDate: string;
-  companySignatureName: string;
-  documentName: string;
-  documentStatus: string;
-  documentType: string;
-  employeeNumber: string;
-  employeeSigDate: string;
-  employeeSignatureName: string;
-  id?: string;
+  readonly companySigDate: string;
+  readonly companySignatureName: string;
+  readonly documentName: string;
+  readonly documentStatus: string;
+  readonly documentType: string;
+  readonly employeeNumber: string;
+  readonly employeeSigDate: string;
+  readonly employeeSignatureName: string;
+  readonly id?: string;
 };
 
 //типизация запросов api

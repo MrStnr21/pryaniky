@@ -8,7 +8,7 @@ import { TDocState } from "../reducers/data-doc";
 
 export type TStore = {
   auth: TAuthState;
-  getDoc: TDocState;
+  documents: TDocState;
 };
 
 export type RootState = ReturnType<typeof store.getState>;

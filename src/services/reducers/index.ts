@@ -5,7 +5,7 @@ import { getDocReducer } from "./data-doc";
 
 const rootReducer = combineReducers({
   auth: authorizationReducer,
-  getDoc: getDocReducer,
+  documents: getDocReducer,
 });
 
 export { rootReducer };
