@@ -9,6 +9,7 @@ import { LoginPage, MainPage } from "../../pages";
 import { routesUrl } from "../utils/routesData";
 
 import { ProtectedRoute } from "../../pages/protected-route";
+import { NotFoundPage } from "../../pages/not-found/not-found";
 
 const App: FC = () => {
   return (
@@ -30,6 +31,7 @@ const App: FC = () => {
             </ProtectedRoute>
           }
         />
+        <Route path={routesUrl.notFoundPage} element={<NotFoundPage />} />
       </Routes>
     </div>
   );

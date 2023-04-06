@@ -64,7 +64,7 @@ const loginAction: any = (userInfo: { [name: string]: string }) => {
 };
 
 //экшн разлогина
-const logoutAction: any = (userInfo: { [name: string]: string }) => {
+const logoutAction: any = () => {
   return function (dispatch: AppDispatch) {
     localStorage.removeItem("x-auth");
     dispatch({ type: LOGOUT });

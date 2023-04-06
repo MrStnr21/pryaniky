@@ -13,7 +13,7 @@ type TModal = {
 
 const Modal: FC<TModal> = ({ heading, children, open, onClose }) => {
   return (
-    <div>
+    <>
       <ModalContainer
         open={open}
         onClose={onClose}
@@ -35,7 +35,7 @@ const Modal: FC<TModal> = ({ heading, children, open, onClose }) => {
           </div>
         </Box>
       </ModalContainer>
-    </div>
+    </>
   );
 };
 

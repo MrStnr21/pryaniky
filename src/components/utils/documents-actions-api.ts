@@ -5,6 +5,7 @@ import { request } from "./api";
 import {
   IAddDocResponse,
   IEditDocResponse,
+  IDeleteDocResponse,
   TDoc,
 } from "../../services/types/data";
 
@@ -22,7 +23,7 @@ function addNewDocApi(docInfo: TDoc) {
 
 //запрос на удаление документа
 function deleteDocApi(id: string) {
-  return request<IEditDocResponse>(`${BASE_URL}/userdocs/delete/${id}`, {
+  return request<IDeleteDocResponse>(`${BASE_URL}/userdocs/delete/${id}`, {
     method: "POST",
     headers: {
       "x-auth": localStorage.getItem("x-auth")!,
@@ -31,4 +32,16 @@ function deleteDocApi(id: string) {
   });
 }
 
-export { addNewDocApi, deleteDocApi };
+//запрос на редактирование документа
+function editDocApi(docInfo: TDoc, id: string) {
+  return request<IEditDocResponse>(`${BASE_URL}/userdocs/set/${id}`, {
+    method: "POST",
+    headers: {
+      "x-auth": localStorage.getItem("x-auth")!,
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: JSON.stringify(docInfo),
+  });
+}
+
+export { addNewDocApi, deleteDocApi, editDocApi };

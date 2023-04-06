@@ -1,0 +1,13 @@
+.container {
+  margin: 0 auto;
+  padding: 100px 0 0 0;
+  text-align: center;
+  position: relative;
+}
+
+.title {
+  margin: 0 auto;
+  padding-bottom: 50px;
+  font-size: 34px;
+  color: #000000;
+}

@@ -16,7 +16,11 @@ import {
 
 import { routesUrl } from "../utils/routesData";
 import { tableHeading } from "../utils/data";
-import { addDocumentSel, documentsSel } from "../utils/selectorData";
+import {
+  addDocumentSel,
+  documentsSel,
+  editDocumentSel,
+} from "../utils/selectorData";
 import { deleteDocumentSel } from "../utils/selectorData";
 
 import { useAppDispatch, useAppSelector } from "../../services/hooks/hooks";
@@ -29,6 +33,7 @@ import { TDoc } from "../../services/types/data";
 import { TableElement } from "../table-element/table-element";
 import { Modal } from "../modal/modal";
 import { DocumentForm } from "../document-form/document-form";
+import { Loader } from "../loader/loader";
 
 const Table: FC = () => {
   const navigate = useNavigate();
@@ -36,20 +41,21 @@ const Table: FC = () => {
 
   const [openModal, setOpenModal] = useState<boolean>(false);
 
-  const { documents } = useAppSelector(documentsSel);
+  const { documents, documentsRequest } = useAppSelector(documentsSel);
   const { addDocSuccess } = useAppSelector(addDocumentSel);
   const { deleteDocSuccess } = useAppSelector(deleteDocumentSel);
+  const { editDocSuccess } = useAppSelector(editDocumentSel);
 
   useEffect(() => {
     dispatch(getDataDocAction());
-  }, [dispatch, addDocSuccess, deleteDocSuccess]);
+  }, [dispatch, addDocSuccess, deleteDocSuccess, editDocSuccess]);
 
   const handleLogout = () => {
     dispatch(logoutAction());
     navigate(routesUrl.login);
   };
 
-  const handleOpenModal = () => {
+  const handleOpenModalAdd = () => {
     setOpenModal(true);
   };
 
@@ -58,7 +64,7 @@ const Table: FC = () => {
   return (
     <section className={styleTable.section}>
       <div className={styleTable.controlContainer}>
-        <Button variant="outlined" onClick={handleOpenModal}>
+        <Button variant="outlined" onClick={handleOpenModalAdd}>
           <PostAddIcon />
           <h2 className={styleTable.docControl}>Добавить новый документ</h2>
         </Button>
@@ -91,6 +97,7 @@ const Table: FC = () => {
           />
         }
       />
+      {documentsRequest ? <Loader /> : null}
     </section>
   );
 };
