@@ -1,4 +1,4 @@
-import { loginApi } from "../../components/utils/api";
+import { loginApi } from "../../components/utils/auth-api";
 
 import { TUser } from "../types/data";
 import { AppDispatch } from "../types";

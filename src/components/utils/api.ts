@@ -1,12 +1,4 @@
-import { BASE_URL } from "./data";
-
-import {
-  IResponse,
-  ILoginResponse,
-  IGetDocResponse,
-  IAddDocResponse,
-  TDoc,
-} from "../../services/types/data";
+import { IResponse } from "../../services/types/data";
 
 type TOptions = {
   headers: { "x-auth"?: string; "Content-Type": string };
@@ -26,41 +18,4 @@ function request<T>(url: string, options: TOptions): Promise<T> {
   return fetch(url, options).then(checkRes);
 }
 
-//запрос на авторизацию
-function loginApi(userInfo: { [name: string]: string }) {
-  return request<ILoginResponse>(`${BASE_URL}/login`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json;charset=utf-8",
-    },
-    body: JSON.stringify({
-      name: userInfo.name,
-      password: userInfo.password,
-    }),
-  });
-}
-
-//запрос получения массива данных для таблицы
-function getDataDocApi() {
-  return request<IGetDocResponse>(`${BASE_URL}/userdocs/get`, {
-    method: "GET",
-    headers: {
-      "x-auth": localStorage.getItem("x-auth")!,
-      "Content-Type": "application/json;charset=utf-8",
-    },
-  });
-}
-
-//запрос на добавление нового документа
-function addNewDocApi(docInfo: TDoc) {
-  return request<IAddDocResponse>(`${BASE_URL}/userdocs/create`, {
-    method: "POST",
-    headers: {
-      "x-auth": localStorage.getItem("x-auth")!,
-      "Content-Type": "application/json;charset=utf-8",
-    },
-    body: JSON.stringify(docInfo),
-  });
-}
-
-export { loginApi, getDataDocApi, addNewDocApi };
+export { request };

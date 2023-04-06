@@ -53,6 +53,10 @@ export interface IAddDocResponse extends IGetDocResponse {
   document: TDoc;
 }
 
+export interface IEditDocResponse extends IGetDocResponse {
+  document: TDoc;
+}
+
 //типизация хука useForm
 export type TFormStateType = {
   name?: string;

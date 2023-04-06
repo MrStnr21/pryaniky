@@ -1,4 +1,5 @@
-import { addNewDocApi } from "../../components/utils/api";
+import { addNewDocApi } from "../../components/utils/documents-actions-api";
+
 import { AppDispatch } from "../types";
 
 import { TDoc } from "../types/data";

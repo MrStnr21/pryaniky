@@ -8,7 +8,7 @@ const tableHeading: TDoc = {
   documentType: "Тип документа",
   employeeNumber: "Число сотрудников",
   employeeSigDate: "Дата подписания",
-  employeeSignatureName: "Подписи сотрудников",
+  employeeSignatureName: "Подпись сотрудников",
 };
 
 const initialDocumentState: TDoc = {
