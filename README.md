@@ -1,46 +1,62 @@
-# Getting Started with Create React App
+# Pryaniky
+### *Тестовое задание от [Пряники](https://pryaniky.com/ru-aboutpryaniky/)*
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Описание проекта
+Небольшое SPA приложение по работе с документами.
+Представляет собой таблицу из документов, которая предоставляет CRUD операции. Есть возможность авторизации, добавления, редактирования и удаления документов.
 
-## Available Scripts
+Данные для авторизации:
+ - "username": user{N}
+ - "password": password
+ 
+user{N} – где вместо N нужно ввести число, например user1, user2... user33. Данные в таблице для каждого сохраняются индивидуально.
+password – одинаков для всех логинов, в случае его отличия сервер вернёт ошибку.
 
-In the project directory, you can run:
+## Функционал:
+- Авторизация;
+- Отрисовка полученных документов;
+- Добавление нового документа;
+- Редактирование существующих документов;
+- Удаление документов;
+- Обработка ошибок.
 
-### `npm start`
+## Стек технологий:
+- TypeScript;
+- React + Redux;
+- JS;
+- API;
+- CSS;
+- HTML.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Установка и запуск проекта:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Клонировать репозиторий:
 
-### `npm test`
+    git clone https://github.com/MrStnr21/pryaniky.git
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Установить зависимости:
 
-### `npm run build`
+    npm install
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Собрать проект:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    npm run build
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Запустить проект:
 
-### `npm run eject`
+    npm run start
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Скриншоты:
+<details><summary><b>Развернуть</b></summary>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![login-page](https://user-images.githubusercontent.com/104725482/230595845-ba5f9de7-ff39-4fcd-80a4-be8e78df1ef2.png)
+![main](https://user-images.githubusercontent.com/104725482/230595857-e213c837-7c4d-4f19-aad7-fe0b8fdc3b96.png)
+![add-document](https://user-images.githubusercontent.com/104725482/230595885-f3891c0f-44ae-4df6-abe6-9b0d71e62eaf.png)
+![edit-document](https://user-images.githubusercontent.com/104725482/230595898-179538eb-05da-4a2f-b3a7-784fdc171c3e.png)
+![delete-document](https://user-images.githubusercontent.com/104725482/230595913-19d461f0-5906-44d1-8c23-a1fa4aaf90be.png)
+![logout](https://user-images.githubusercontent.com/104725482/230595919-a99b9f12-902c-408e-803d-868f4e1598ae.png)
+![notfound](https://user-images.githubusercontent.com/104725482/230595928-ca61ac07-9382-4d80-862a-f2aa6d0cad91.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+</details>
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Ссылка на сайт: https://mrstnr21.github.io/pryaniky/
