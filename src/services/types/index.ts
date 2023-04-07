@@ -1,15 +1,19 @@
 import { Dispatch } from "react";
+import { Action, ActionCreator } from "redux";
+import { ThunkAction } from "redux-thunk";
+
 import { TAuthState } from "../reducers/authorization";
 import { store } from "../store";
 
 import { TAuthorizationActions } from "../actions/authorization";
 import { TGetDocActions } from "../actions/data-doc";
-import { TDocState } from "../reducers/data-doc";
 import { TAddDocActions } from "../actions/add-doc";
-import { TAddDocState } from "../reducers/add-doc";
 import { TDeleteDocActions } from "../actions/delete-doc";
-import { TDeleteDocState } from "../reducers/delete-doc";
 import { TEditDocActions } from "../actions/edit-doc";
+
+import { TDocState } from "../reducers/data-doc";
+import { TAddDocState } from "../reducers/add-doc";
+import { TDeleteDocState } from "../reducers/delete-doc";
 import { TEditDocState } from "../reducers/edit-doc";
 
 export type TStore = {
@@ -28,5 +32,9 @@ export type TApplicationActions =
   | TAddDocActions
   | TDeleteDocActions
   | TEditDocActions;
+
+export type AppThunk<TReturn = void> = ActionCreator<
+  ThunkAction<TReturn, Action, RootState, TApplicationActions>
+>;
 
 export type AppDispatch = Dispatch<TApplicationActions>;

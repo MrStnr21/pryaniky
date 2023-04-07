@@ -1,6 +1,6 @@
 import { deleteDocApi } from "../../components/utils/documents-actions-api";
 
-import { AppDispatch } from "../types";
+import { AppDispatch, AppThunk } from "../types";
 
 const DELETE_DOC_REQUEST = "DELETE_DOC_REQUEST";
 const DELETE_DOC_SUCCESS = "DELETE_DOC_SUCCESS";
@@ -25,7 +25,7 @@ export type TDeleteDocActions =
 
 //экшн добавления нового документа
 
-const deleteDocAction: any = (id: string) => {
+const deleteDocAction: AppThunk = (id: string) => {
   return function (dispatch: AppDispatch) {
     dispatch({
       type: DELETE_DOC_REQUEST,
