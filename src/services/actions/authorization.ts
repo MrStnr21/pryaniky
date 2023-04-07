@@ -2,6 +2,7 @@ import { loginApi } from "../../components/utils/auth-api";
 
 import { TUser } from "../types/data";
 import { AppDispatch } from "../types";
+import { AppThunk } from "../types";
 
 const LOGIN_REQUSET = "LOGIN_REQUSET";
 const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -33,7 +34,7 @@ export type TAuthorizationActions =
   | ILogout;
 
 //экшн логина
-const loginAction: any = (userInfo: { [name: string]: string }) => {
+const loginAction: AppThunk = (userInfo: { [name: string]: string }) => {
   return function (dispatch: AppDispatch) {
     dispatch({
       type: LOGIN_REQUSET,
@@ -64,7 +65,7 @@ const loginAction: any = (userInfo: { [name: string]: string }) => {
 };
 
 //экшн разлогина
-const logoutAction: any = () => {
+const logoutAction: AppThunk = () => {
   return function (dispatch: AppDispatch) {
     localStorage.removeItem("x-auth");
     dispatch({ type: LOGOUT });

@@ -45,7 +45,7 @@ const TableElement: FC<TDocument> = ({ heading = false, document }) => {
     setOpenModal(false);
   };
 
-  const handleEdit = (evt: any) => {
+  const handleEdit = (evt: FormEvent) => {
     evt.preventDefault();
 
     setIdDoc(document.id);

@@ -1,4 +1,4 @@
-import { AppDispatch } from "../types";
+import { AppDispatch, AppThunk } from "../types";
 
 import { getDataDocApi } from "../../components/utils/get-documents-api";
 import { TDoc } from "../types/data";
@@ -26,7 +26,7 @@ export type TGetDocActions =
   | IGetDocErrorAction;
 
 //экшн получения массива данных для таблицы
-const getDataDocAction: any = () => {
+const getDataDocAction: AppThunk = () => {
   return function (dispatch: AppDispatch) {
     dispatch({
       type: GET_DOC_REQUEST,

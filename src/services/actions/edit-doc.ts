@@ -1,6 +1,6 @@
 import { addNewDocApi } from "../../components/utils/documents-actions-api";
 
-import { AppDispatch } from "../types";
+import { AppDispatch, AppThunk } from "../types";
 
 import { TDoc } from "../types/data";
 
@@ -27,7 +27,7 @@ export type TEditDocActions =
 
 //экшн добавления нового документа
 
-const editDocAction: any = (docInfo: TDoc) => {
+const editDocAction: AppThunk = (docInfo: TDoc) => {
   return function (dispatch: AppDispatch) {
     dispatch({
       type: EDIT_DOC_REQUEST,
