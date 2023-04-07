@@ -12,7 +12,7 @@ const ProtectedRoute: FC<TProtectedRoute> = ({ children, notAuth = false }) => {
   const location: Location = useLocation();
   const token = localStorage.getItem("x-auth");
 
-  const from: string = location.state?.from || "/main";
+  const from: string = location.state?.from || "/";
 
   if (token && notAuth) {
     return <Navigate to={from} />;

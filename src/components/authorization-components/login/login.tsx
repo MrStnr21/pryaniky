@@ -132,7 +132,7 @@ const Login: FC = () => {
                     target="_blank"
                     variant="body2"
                   >
-                    {"Вы не зарегестрированы?"}
+                    {"Вы не зарегистрированы?"}
                   </Link>
                 </Grid>
               </Grid>

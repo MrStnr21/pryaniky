@@ -1,7 +1,7 @@
 {
   "name": "pryaniky",
   "version": "0.1.0",
-  "homepage": "/main",
+  "homepage": "https://mrstnr21.github.io/pryaniky",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",
@@ -17,6 +17,7 @@
     "@types/node": "^16.18.23",
     "@types/react": "^18.0.31",
     "@types/react-dom": "^18.0.11",
+    "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
@@ -31,6 +32,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

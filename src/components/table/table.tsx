@@ -39,6 +39,7 @@ const Table: FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
+  const [typeModal, setTypemodal] = useState<string>("add");
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   const { documents, documentsRequest } = useAppSelector(documentsSel);
@@ -51,11 +52,17 @@ const Table: FC = () => {
   }, [dispatch, addDocSuccess, deleteDocSuccess, editDocSuccess]);
 
   const handleLogout = () => {
+    setTypemodal("logout");
+    setOpenModal(true);
+  };
+
+  const handleLogoutAgree = () => {
     dispatch(logoutAction());
     navigate(routesUrl.login);
   };
 
-  const handleOpenModalAdd = () => {
+  const handleAddDocument = () => {
+    setTypemodal("add");
     setOpenModal(true);
   };
 
@@ -64,7 +71,7 @@ const Table: FC = () => {
   return (
     <section className={styleTable.section}>
       <div className={styleTable.controlContainer}>
-        <Button variant="outlined" onClick={handleOpenModalAdd}>
+        <Button variant="outlined" onClick={handleAddDocument}>
           <PostAddIcon />
           <h2 className={styleTable.docControl}>Добавить новый документ</h2>
         </Button>
@@ -85,18 +92,38 @@ const Table: FC = () => {
           </TableBody>
         </TableTemplate>
       </TableContainer>
-      <Modal
-        open={openModal}
-        onClose={handleCloseModal}
-        heading={"Добавить новый документ"}
-        children={
-          <DocumentForm
-            submitHeading={"Добавить документ"}
-            type={"addDocument"}
-            onClose={handleCloseModal}
-          />
-        }
-      />
+      {typeModal === "add" ? (
+        <Modal
+          open={openModal}
+          onClose={handleCloseModal}
+          heading={"Добавить новый документ"}
+          children={
+            <DocumentForm
+              submitHeading={"Добавить документ"}
+              type={"addDocument"}
+              onClose={handleCloseModal}
+            />
+          }
+        />
+      ) : (
+        <Modal
+          open={openModal}
+          onClose={handleCloseModal}
+          heading={"Вы уверены?"}
+          children={
+            <div className={styleTable.buttonAgree}>
+              <Button
+                style={{ width: 425 }}
+                variant="outlined"
+                onClick={handleLogoutAgree}
+              >
+                Выйти
+              </Button>
+            </div>
+          }
+        />
+      )}
+
       {documentsRequest ? <Loader /> : null}
     </section>
   );

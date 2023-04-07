@@ -1,6 +1,8 @@
-import { FC, FormEvent, FormEventHandler, useState } from "react";
+import { FC, FormEvent, useState } from "react";
 
-import { IconButton, TableCell, TableRow } from "@mui/material";
+import stylesTableElement from "./table-element.module.css";
+
+import { Button, IconButton, TableCell, TableRow } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -21,6 +23,7 @@ const TableElement: FC<TDocument> = ({ heading = false, document }) => {
   const dispatch = useAppDispatch();
   const { documents } = useAppSelector(documentsSel);
 
+  const [typeModal, setTypemodal] = useState<string>("edit");
   const [openModal, setOpenModal] = useState<boolean>(false);
   const [idDoc, setIdDoc] = useState<string>();
 
@@ -31,7 +34,15 @@ const TableElement: FC<TDocument> = ({ heading = false, document }) => {
   const handleDelete = (evt: FormEvent) => {
     evt.preventDefault();
 
+    setTypemodal("delete");
+    setOpenModal(true);
+  };
+
+  const handleDeleteAgree = (evt: FormEvent) => {
+    evt.preventDefault();
+
     dispatch(deleteDocAction(document.id));
+    setOpenModal(false);
   };
 
   const handleEdit = (evt: any) => {
@@ -71,24 +82,43 @@ const TableElement: FC<TDocument> = ({ heading = false, document }) => {
           </>
         ) : (
           <>
-            <TableCell align="left">Редакитровать</TableCell>
+            <TableCell align="left">Редактировать</TableCell>
             <TableCell align="left">Удалить</TableCell>
           </>
         )}
       </TableRow>
-      <Modal
-        open={openModal}
-        onClose={handleCloseModal}
-        heading={"Редактировать документ"}
-        children={
-          <DocumentForm
-            submitHeading={"Редактировать документ"}
-            type={"editDocument"}
-            onClose={handleCloseModal}
-            docValues={documentItem}
-          />
-        }
-      />
+      {typeModal === "edit" ? (
+        <Modal
+          open={openModal}
+          onClose={handleCloseModal}
+          heading={"Редактировать документ"}
+          children={
+            <DocumentForm
+              submitHeading={"Редактировать документ"}
+              type={"editDocument"}
+              onClose={handleCloseModal}
+              docValues={documentItem}
+            />
+          }
+        />
+      ) : (
+        <Modal
+          open={openModal}
+          onClose={handleCloseModal}
+          heading={"Вы уверены?"}
+          children={
+            <div className={stylesTableElement.buttonAgree}>
+              <Button
+                style={{ width: 425 }}
+                variant="outlined"
+                onClick={handleDeleteAgree}
+              >
+                Удалить
+              </Button>
+            </div>
+          }
+        />
+      )}
     </>
   );
 };
