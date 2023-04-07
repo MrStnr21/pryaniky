@@ -1,6 +1,6 @@
 import { AppDispatch } from "../types";
 
-import { getDataDocApi } from "../../components/utils/api";
+import { getDataDocApi } from "../../components/utils/get-documents-api";
 import { TDoc } from "../types/data";
 
 const GET_DOC_REQUEST = "GET_DOC_REQUEST";
@@ -35,7 +35,6 @@ const getDataDocAction: any = () => {
     getDataDocApi()
       .then((res) => {
         if (!res.error_code) {
-          console.log(res.data);
           dispatch({
             type: GET_DOC_SUCCESS,
             payload: res.data,

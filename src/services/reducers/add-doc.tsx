@@ -6,9 +6,9 @@ import {
 } from "../actions/add-doc";
 
 export type TAddDocState = {
-  addDocRequest: Boolean;
-  addDocSuccess: Boolean;
-  addDocError: Boolean;
+  addDocRequest: boolean;
+  addDocSuccess: boolean;
+  addDocError: boolean;
 };
 
 const addDocInitialState: TAddDocState = {

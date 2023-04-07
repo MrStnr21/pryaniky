@@ -9,8 +9,8 @@ import { TGetDocActions } from "../actions/data-doc";
 
 export type TDocState = {
   documents: Array<TDoc>;
-  documentsRequest: Boolean;
-  documentsError: Boolean;
+  documentsRequest: boolean;
+  documentsError: boolean;
 };
 
 const docInitialState: TDocState = {

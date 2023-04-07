@@ -11,8 +11,6 @@ import { TUser } from "../types/data";
 
 export type TAuthState = {
   user: TUser | null;
-  isLoading: boolean;
-  hasError: boolean;
 
   loginSuccess: boolean;
   loginRequest: boolean;
@@ -21,8 +19,6 @@ export type TAuthState = {
 
 const authInitialState: TAuthState = {
   user: null,
-  isLoading: false,
-  hasError: false,
 
   loginSuccess: false,
   loginRequest: false,

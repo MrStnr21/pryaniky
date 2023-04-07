@@ -36,3 +36,8 @@
   font-size: 16px;
   font-weight: normal;
 }
+
+.buttonAgree {
+  margin: 0 auto;
+  padding: 15px 40px;
+}

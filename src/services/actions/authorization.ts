@@ -1,4 +1,4 @@
-import { loginApi } from "../../components/utils/api";
+import { loginApi } from "../../components/utils/auth-api";
 
 import { TUser } from "../types/data";
 import { AppDispatch } from "../types";
@@ -64,7 +64,7 @@ const loginAction: any = (userInfo: { [name: string]: string }) => {
 };
 
 //экшн разлогина
-const logoutAction: any = (userInfo: { [name: string]: string }) => {
+const logoutAction: any = () => {
   return function (dispatch: AppDispatch) {
     localStorage.removeItem("x-auth");
     dispatch({ type: LOGOUT });

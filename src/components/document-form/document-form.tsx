@@ -1,29 +1,45 @@
-import { FC, useState, ChangeEvent, FormEvent } from "react";
+import { FC, useState, ChangeEvent, FormEvent, useEffect } from "react";
 
 import stylesDocumentForm from "./document-form.module.css";
 
 import { TextField, Button } from "@mui/material";
 
 import { initialDocumentState } from "../utils/data";
+import { tableHeading } from "../utils/data";
 
 import { useAppDispatch } from "../../services/hooks/hooks";
 
 import { addDocAction } from "../../services/actions/add-doc";
 
 import { TDoc } from "../../services/types/data";
+import { editDocAction } from "../../services/actions/edit-doc";
 
 type TDocument = {
-  documentInfo: TDoc;
+  submitHeading: string;
+  type: string;
+  docValues?: TDoc;
   onClose: () => void;
 };
 
-const DocumentForm: FC<TDocument> = ({ documentInfo, onClose }) => {
-  const [values, setValue] = useState<TDoc>(initialDocumentState);
+const DocumentForm: FC<TDocument> = ({
+  type,
+  submitHeading,
+  docValues,
+  onClose,
+}) => {
   const dispatch = useAppDispatch();
 
+  const [addValues, setAddValue] = useState<TDoc>(initialDocumentState);
+
+  useEffect(() => {
+    if (type === "editDocument" && docValues) {
+      setAddValue(docValues);
+    }
+  }, [docValues, type]);
+
   const onChange = (evt: ChangeEvent<HTMLInputElement>) => {
-    setValue({
-      ...values,
+    setAddValue({
+      ...addValues,
       [evt.target.name]: evt.target.value,
     });
   };
@@ -31,105 +47,118 @@ const DocumentForm: FC<TDocument> = ({ documentInfo, onClose }) => {
   const handleSubmitAdd = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
 
-    dispatch(addDocAction(values));
+    dispatch(addDocAction(addValues));
+    onClose();
+  };
+
+  const handleSubmitEdit = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+
+    dispatch(editDocAction(addValues, addValues.id));
     onClose();
   };
 
   return (
-    <form className={stylesDocumentForm.container} onSubmit={handleSubmitAdd}>
+    <form
+      className={stylesDocumentForm.container}
+      onSubmit={type === "addDocument" ? handleSubmitAdd : handleSubmitEdit}
+    >
       <TextField
         name={"documentName"}
         className="materialUIInput"
-        label={documentInfo.documentName}
+        label={tableHeading.documentName}
         variant="outlined"
         color="primary"
-        style={{ width: 400 }}
+        style={{ width: 425 }}
         onChange={onChange}
-        value={values.documentName || ""}
+        value={addValues.documentName || ""}
         required
       />
       <TextField
         name={"documentType"}
         className="materialUIInput"
-        label={documentInfo.documentType}
+        label={tableHeading.documentType}
         variant="outlined"
         color="primary"
-        style={{ width: 400 }}
+        style={{ width: 425 }}
         onChange={onChange}
-        value={values.documentType}
+        value={addValues.documentType || ""}
         required
       />
       <TextField
         name={"documentStatus"}
         className="materialUIInput"
-        label={documentInfo.documentStatus}
+        label={tableHeading.documentStatus}
         variant="outlined"
         color="primary"
-        style={{ width: 400 }}
+        style={{ width: 425 }}
         onChange={onChange}
-        value={values.documentStatus}
+        value={addValues.documentStatus || ""}
         required
       />
       <TextField
         name={"employeeNumber"}
         className="materialUIInput"
-        label={documentInfo.employeeNumber}
+        label={tableHeading.employeeNumber}
         variant="outlined"
         color="primary"
-        style={{ width: 400 }}
+        style={{ width: 425 }}
         onChange={onChange}
-        value={values.employeeNumber}
+        value={addValues.employeeNumber || ""}
         required
       />
-      <TextField
-        name={"employeeSignatureName"}
-        className="materialUIInput"
-        label={documentInfo.employeeSignatureName}
-        variant="outlined"
-        color="primary"
-        style={{ width: 400 }}
-        onChange={onChange}
-        value={values.employeeSignatureName}
-        required
-      />
-      <TextField
-        name={"employeeSigDate"}
-        className="materialUIInput"
-        label={documentInfo.employeeSigDate}
-        variant="outlined"
-        color="primary"
-        style={{ width: 400 }}
-        onChange={onChange}
-        value={values.employeeSigDate}
-        required
-      />
-      <TextField
-        name={"companySignatureName"}
-        className="materialUIInput"
-        label={documentInfo.companySignatureName}
-        variant="outlined"
-        color="primary"
-        style={{ width: 400 }}
-        onChange={onChange}
-        value={values.companySignatureName}
-        required
-      />
-      <TextField
-        name={"companySigDate"}
-        className="materialUIInput"
-        label={documentInfo.companySigDate}
-        variant="outlined"
-        color="primary"
-        style={{ width: 400 }}
-        onChange={onChange}
-        value={values.companySigDate}
-        required
-      />
-      <Button type="submit" variant="outlined">
-        Добавить документ
-      </Button>
-      <Button variant="outlined" color="error" onClick={onClose}>
-        закрыть
+      <div className={stylesDocumentForm.signature}>
+        <TextField
+          name={"employeeSignatureName"}
+          className="materialUIInput"
+          label={tableHeading.employeeSignatureName}
+          variant="outlined"
+          color="primary"
+          style={{ width: 425 }}
+          onChange={onChange}
+          value={addValues.employeeSignatureName || ""}
+          required
+        />
+        <TextField
+          name={"employeeSigDate"}
+          type={"date"}
+          placeholder="dd.mm.yyyy"
+          className="materialUIInput"
+          variant="outlined"
+          color="primary"
+          style={{ width: 425 }}
+          onChange={onChange}
+          value={addValues.employeeSigDate.slice(0, 10) || ""}
+          required
+        />
+      </div>
+      <div className={stylesDocumentForm.signature}>
+        <TextField
+          name={"companySignatureName"}
+          className="materialUIInput"
+          label={tableHeading.companySignatureName}
+          variant="outlined"
+          color="primary"
+          style={{ width: 425 }}
+          onChange={onChange}
+          value={addValues.companySignatureName || ""}
+          required
+        />
+        <TextField
+          name={"companySigDate"}
+          type={"date"}
+          placeholder="dd.mm.yyyy"
+          className="materialUIInput"
+          variant="outlined"
+          color="primary"
+          style={{ width: 425 }}
+          onChange={onChange}
+          value={addValues.companySigDate.slice(0, 10) || ""}
+          required
+        />
+      </div>
+      <Button style={{ width: 425 }} type="submit" variant="outlined">
+        {submitHeading}
       </Button>
     </form>
   );

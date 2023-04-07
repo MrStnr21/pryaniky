@@ -1,51 +1,42 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 
 import stylesModal from "./modal.module.css";
 
-import { Box, Button, Modal } from "@mui/material";
-import PostAddIcon from "@mui/icons-material/PostAdd";
+import { Box, Button, Modal as ModalContainer } from "@mui/material";
 
-import { DocumentForm } from "../document-form/document-form";
-
-import { tableHeading } from "../utils/data";
-
-const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  maxWidth: 500,
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  borderRadius: 10,
-  p: 4,
+type TModal = {
+  heading: string;
+  children: JSX.Element;
+  open: boolean;
+  onClose: () => void;
 };
 
-type TModal = { heading: string };
-
-const BasicModal: FC<TModal> = ({ heading }) => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
+const Modal: FC<TModal> = ({ heading, children, open, onClose }) => {
   return (
-    <div>
-      <Button variant="outlined" onClick={handleOpen}>
-        <PostAddIcon />
-        <h2 className={stylesModal.docControl}>{heading}</h2>
-      </Button>
-      <Modal
+    <>
+      <ModalContainer
         open={open}
-        onClose={handleClose}
+        onClose={onClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <DocumentForm documentInfo={tableHeading} onClose={handleClose} />
+        <Box className={stylesModal.modal}>
+          <h2 className={stylesModal.title}>{heading}</h2>
+          {children}
+          <div className={stylesModal.buttonClose}>
+            <Button
+              style={{ width: 425 }}
+              variant="outlined"
+              color="error"
+              onClick={onClose}
+            >
+              закрыть
+            </Button>
+          </div>
         </Box>
-      </Modal>
-    </div>
+      </ModalContainer>
+    </>
   );
 };
 
-export { BasicModal };
+export { Modal };

@@ -1,6 +1,8 @@
 import { FC } from "react";
 import { Location, Navigate, useLocation } from "react-router-dom";
 
+import { routesUrl } from "../components/utils/routesData";
+
 type TProtectedRoute = {
   children: JSX.Element;
   notAuth?: boolean;
@@ -17,7 +19,7 @@ const ProtectedRoute: FC<TProtectedRoute> = ({ children, notAuth = false }) => {
   }
 
   if (!token && !notAuth) {
-    return <Navigate to="/login" state={{ from: location }} />;
+    return <Navigate to={routesUrl.loginPage} state={{ from: location }} />;
   }
 
   return children;

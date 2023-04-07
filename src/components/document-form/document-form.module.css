@@ -1,7 +1,13 @@
 .container {
   margin: 0 auto;
-  padding: 40px;
+  padding: 40px 40px 15px;
   display: flex;
   flex-direction: column;
   row-gap: 15px;
+}
+
+.signature {
+  display: flex;
+  width: 425px;
+  column-gap: 15px;
 }
