@@ -2,10 +2,10 @@ import {
   GET_DOC_REQUEST,
   GET_DOC_SUCCESS,
   GET_DOC_ERROR,
+  TGetDocActions,
 } from "../actions/data-doc";
 
 import { TDoc } from "../types/data";
-import { TGetDocActions } from "../actions/data-doc";
 
 export type TDocState = {
   documents: Array<TDoc>;

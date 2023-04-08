@@ -3,9 +3,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   LOGOUT,
+  TAuthorizationActions,
 } from "../actions/authorization";
-
-import { TAuthorizationActions } from "../actions/authorization";
 
 import { TUser } from "../types/data";
 

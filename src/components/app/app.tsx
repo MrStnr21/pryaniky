@@ -4,12 +4,11 @@ import { Routes, Route } from "react-router-dom";
 
 import styleApp from "./app.module.css";
 
-import { LoginPage, MainPage } from "../../pages";
+import { LoginPage, MainPage, NotFoundPage } from "../../pages";
 
 import { routesUrl } from "../utils/routesData";
 
 import { ProtectedRoute } from "../../pages/protected-route";
-import { NotFoundPage } from "../../pages/not-found/not-found";
 
 const App: FC = () => {
   return (

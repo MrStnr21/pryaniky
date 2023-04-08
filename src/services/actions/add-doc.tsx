@@ -1,9 +1,7 @@
 import { addNewDocApi } from "../../components/utils/documents-actions-api";
 
-import { AppDispatch } from "../types";
-
+import { AppDispatch, AppThunk } from "../types";
 import { TDoc } from "../types/data";
-import { AppThunk } from "../types";
 
 const ADD_DOC_REQUEST = "ADD_DOC_REQUEST";
 const ADD_DOC_SUCCESS = "ADD_DOC_SUCCESS";

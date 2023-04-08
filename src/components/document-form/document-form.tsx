@@ -10,9 +10,9 @@ import { tableHeading } from "../utils/data";
 import { useAppDispatch } from "../../services/hooks/hooks";
 
 import { addDocAction } from "../../services/actions/add-doc";
+import { editDocAction } from "../../services/actions/edit-doc";
 
 import { TDoc } from "../../services/types/data";
-import { editDocAction } from "../../services/actions/edit-doc";
 
 type TDocument = {
   submitHeading: string;

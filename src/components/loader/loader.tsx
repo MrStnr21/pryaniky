@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { Backdrop, CircularProgress } from "@mui/material";
 
 const Loader: FC = () => {
