@@ -6,4 +6,10 @@ const addDocumentSel = (store: TStore) => store.addDocument;
 const deleteDocumentSel = (store: TStore) => store.deleteDocument;
 const editDocumentSel = (store: TStore) => store.editDocument;
 
-export { authSel, documentsSel, addDocumentSel, deleteDocumentSel, editDocumentSel };
+export {
+  authSel,
+  documentsSel,
+  addDocumentSel,
+  deleteDocumentSel,
+  editDocumentSel,
+};

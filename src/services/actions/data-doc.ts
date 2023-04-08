@@ -1,6 +1,6 @@
-import { AppDispatch, AppThunk } from "../types";
-
 import { getDataDocApi } from "../../components/utils/get-documents-api";
+
+import { AppDispatch, AppThunk } from "../types";
 import { TDoc } from "../types/data";
 
 const GET_DOC_REQUEST = "GET_DOC_REQUEST";

@@ -1,11 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
+import ReactDOM from "react-dom/client";
 import { createHashRouter, RouterProvider } from "react-router-dom";
 
 import "./index.css";
 
 import { store } from "./services/store";
+
 import reportWebVitals from "./reportWebVitals";
 
 import { App } from "./components/app/app";

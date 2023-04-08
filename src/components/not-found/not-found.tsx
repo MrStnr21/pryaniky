@@ -1,8 +1,9 @@
 import { FC, useCallback } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
 
 import stylesNotFound from "./not-found.module.css";
+
+import { Button } from "@mui/material";
 
 import { routesUrl } from "../utils/routesData";
 

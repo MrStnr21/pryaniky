@@ -1,7 +1,6 @@
 import { addNewDocApi } from "../../components/utils/documents-actions-api";
 
 import { AppDispatch, AppThunk } from "../types";
-
 import { TDoc } from "../types/data";
 
 const EDIT_DOC_REQUEST = "EDIT_DOC_REQUEST";

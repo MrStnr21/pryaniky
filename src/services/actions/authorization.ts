@@ -1,8 +1,7 @@
 import { loginApi } from "../../components/utils/auth-api";
 
+import { AppDispatch, AppThunk } from "../types";
 import { TUser } from "../types/data";
-import { AppDispatch } from "../types";
-import { AppThunk } from "../types";
 
 const LOGIN_REQUSET = "LOGIN_REQUSET";
 const LOGIN_SUCCESS = "LOGIN_SUCCESS";

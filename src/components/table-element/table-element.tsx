@@ -6,13 +6,16 @@ import { Button, IconButton, TableCell, TableRow } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import { Modal } from "../modal/modal";
-import { DocumentForm } from "../document-form/document-form";
+import { documentsSel } from "../utils/selectorData";
+
+import { useAppDispatch, useAppSelector } from "../../services/hooks/hooks";
+
+import { deleteDocAction } from "../../services/actions/delete-doc";
 
 import { TDoc } from "../../services/types/data";
-import { useAppDispatch, useAppSelector } from "../../services/hooks/hooks";
-import { deleteDocAction } from "../../services/actions/delete-doc";
-import { documentsSel } from "../utils/selectorData";
+
+import { Modal } from "../modal/modal";
+import { DocumentForm } from "../document-form/document-form";
 
 type TDocument = {
   heading?: boolean;

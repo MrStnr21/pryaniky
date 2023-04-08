@@ -2,7 +2,6 @@ import { Dispatch } from "react";
 import { Action, ActionCreator } from "redux";
 import { ThunkAction } from "redux-thunk";
 
-import { TAuthState } from "../reducers/authorization";
 import { store } from "../store";
 
 import { TAuthorizationActions } from "../actions/authorization";
@@ -11,6 +10,7 @@ import { TAddDocActions } from "../actions/add-doc";
 import { TDeleteDocActions } from "../actions/delete-doc";
 import { TEditDocActions } from "../actions/edit-doc";
 
+import { TAuthState } from "../reducers/authorization";
 import { TDocState } from "../reducers/data-doc";
 import { TAddDocState } from "../reducers/add-doc";
 import { TDeleteDocState } from "../reducers/delete-doc";
