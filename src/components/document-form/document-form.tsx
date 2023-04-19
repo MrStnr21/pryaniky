@@ -3,6 +3,9 @@ import { FC, useState, ChangeEvent, FormEvent, useEffect } from "react";
 import stylesDocumentForm from "./document-form.module.css";
 
 import { TextField, Button } from "@mui/material";
+import { DatePicker } from "@mui/x-date-pickers";
+
+import dayjs from "dayjs";
 
 import { initialDocumentState } from "../utils/data";
 import { tableHeading } from "../utils/data";
@@ -37,7 +40,7 @@ const DocumentForm: FC<TDocument> = ({
     }
   }, [docValues, type]);
 
-  const onChange = (evt: ChangeEvent<HTMLInputElement>) => {
+  const onChange = (evt: ChangeEvent<HTMLInputElement>): void => {
     setAddValue({
       ...addValues,
       [evt.target.name]: evt.target.value,
@@ -119,17 +122,15 @@ const DocumentForm: FC<TDocument> = ({
           value={addValues.employeeSignatureName || ""}
           required
         />
-        <TextField
-          name={"employeeSigDate"}
-          type={"date"}
-          placeholder="dd.mm.yyyy"
-          className="materialUIInput"
-          variant="outlined"
-          color="primary"
-          style={{ width: 425 }}
-          onChange={onChange}
-          value={addValues.employeeSigDate.slice(0, 10) || ""}
-          required
+
+        <DatePicker
+          onChange={(arg) => {
+            setAddValue({
+              ...addValues,
+              employeeSigDate: arg!.toISOString(),
+            });
+          }}
+          value={dayjs(addValues.employeeSigDate)}
         />
       </div>
       <div className={stylesDocumentForm.signature}>
@@ -144,17 +145,14 @@ const DocumentForm: FC<TDocument> = ({
           value={addValues.companySignatureName || ""}
           required
         />
-        <TextField
-          name={"companySigDate"}
-          type={"date"}
-          placeholder="dd.mm.yyyy"
-          className="materialUIInput"
-          variant="outlined"
-          color="primary"
-          style={{ width: 425 }}
-          onChange={onChange}
-          value={addValues.companySigDate.slice(0, 10) || ""}
-          required
+        <DatePicker
+          onChange={(arg) => {
+            setAddValue({
+              ...addValues,
+              companySigDate: arg!.toISOString(),
+            });
+          }}
+          value={dayjs(addValues.companySigDate)}
         />
       </div>
       <Button style={{ width: 425 }} type="submit" variant="outlined">
