@@ -59,4 +59,4 @@ password – одинаков для всех логинов, в случае е
 
 </details>
 
-## Ссылка на сайт: https://mrstnr21.github.io/pryaniky/
+## Ссылка на сайт: [Пряники](https://mrstnr21.github.io/pryaniky/)
